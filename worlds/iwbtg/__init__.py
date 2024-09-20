@@ -15,12 +15,9 @@ from .Locations import IWBTGLocation, setup_locations, all_locations, location_g
 from .Regions import create_regions, connect_regions
 from .Names import ItemName, LocationName, EventName
 from .Options import IWBTGOptions, mmx_option_groups
-# from .Client import MMXSNIClient
 from .Levels import location_id_to_level_id
-# from .Weaknesses import handle_weaknesses, weapon_id
-# from .Rom import patch_rom, MMXProcedurePatch, HASH_US, HASH_LEGACY
 
-class IWBTGSettings(settings.Group):
+#class IWBTGSettings(settings.Group):
 
 class IWBTGWeb(WebWorld):
     theme = "grass"
@@ -74,62 +71,63 @@ class IWBTGWorld(World):
         
         connect_regions(self)
         
-        total_required_locations = 47
-        if self.options.pickupsanity:
-            total_required_locations += 26
+        total_required_locations = 67 #location num needs verifying (73 counted - bosses)
+		
+        #if self.options.<deathsanity?>:
+        #    total_required_locations += 26
+		
+		orb_piece_list = [
+			ItemName.orb_piece_mike_tyson,
+			ItemName.orb_piece_mecha_birdo,
+			ItemName.orb_piece_dracula,
+			ItemName.orb_piece_kraidgeif,
+			ItemName.orb_piece_mother_brain,
+			ItemName.orb_piece_bowser]
+		
+        if "Orbs" in self.options.guy_open.value:
+			if self.options.divide_orbs.value == 0: # whole orbs
+				itempool += [
+					self.create_item(ItemName.orb_mike_tyson),
+					self.create_item(ItemName.orb_mecha_birdo),
+					self.create_item(ItemName.orb_dracula),
+					self.create_item(ItemName.orb_kraidgief),
+					self.create_item(ItemName.orb_mother_brain),
+					self.create_item(ItemName.orb_bowser),]
+				total_required_locations += 6
+			else:
+				for i in orb_piece_list:
+					orb_piece_number = self.options.divide_orbs.value #2 or 4 per orb
+					for j in range(orb_piece_number):
+						itempool += [self.create_item(orb_piece_list[i])]
+				total_required_locations += 6*orb_piece_number
+						
+		if self.options.set_goal.value == 1:
+			itempool += [
+				self.create_item(ItemName.secret_item_1, ItemClassification.progression),
+				self.create_item(ItemName.secret_item_2, ItemClassification.progression),
+				self.create_item(ItemName.secret_item_3, ItemClassification.progression),
+				self.create_item(ItemName.secret_item_4, ItemClassification.progression),
+				self.create_item(ItemName.secret_item_5, ItemClassification.progression),
+				self.create_item(ItemName.secret_item_6, ItemClassification.progression),]
+		else
+			itempool += [
+				self.create_item(ItemName.secret_item_1),
+				self.create_item(ItemName.secret_item_2),
+				self.create_item(ItemName.secret_item_3),
+				self.create_item(ItemName.secret_item_4),
+				self.create_item(ItemName.secret_item_5),
+				self.create_item(ItemName.secret_item_6),]
+		
+        # Add bow into the pool
+        itempool += [self.create_item(ItemName.bow)]
 
-        # Add levels into the pool
-        start_inventory = self.options.start_inventory.value.copy()
-        stage_list = [
-            ItemName.stage_armored_armadillo,
-            ItemName.stage_boomer_kuwanger,
-            ItemName.stage_chill_penguin,
-            ItemName.stage_flame_mammoth,
-            ItemName.stage_launch_octopus,
-            ItemName.stage_spark_mandrill,
-            ItemName.stage_sting_chameleon,
-            ItemName.stage_storm_eagle,
-        ]
-        stage_selected = self.random.randint(0, 7)
-        if any(stage in self.options.start_inventory_from_pool for stage in stage_list) or \
-           any(stage in start_inventory for stage in stage_list):
-            total_required_locations += 1
-            for i in range(len(stage_list)):
-                if stage_list[i] not in start_inventory:
-                    itempool += [self.create_item(stage_list[i])]
-        else:
-            for i in range(len(stage_list)):
-                if i == stage_selected:
-                    self.multiworld.get_location(LocationName.intro_completed, self.player).place_locked_item(self.create_item(stage_list[i]))
-                else:
-                    itempool += [self.create_item(stage_list[i])]
-
-        if len(self.options.sigma_open.value) == 0:
-            itempool += [self.create_item(ItemName.stage_sigma_fortress)]
-
-        # Add weapons into the pool
-        itempool += [self.create_item(ItemName.electric_spark)]
-        itempool += [self.create_item(ItemName.homing_torpedo)]
-        itempool += [self.create_item(ItemName.storm_tornado)]
-        itempool += [self.create_item(ItemName.shotgun_ice)]
-        itempool += [self.create_item(ItemName.rolling_shield)]
-        itempool += [self.create_item(ItemName.chameleon_sting)]
-        itempool += [self.create_item(ItemName.fire_wave)]
-        itempool += [self.create_item(ItemName.boomerang_cutter)]
-
-        if self.options.hadouken_in_pool:
-            itempool += [self.create_item(ItemName.hadouken, ItemClassification.useful)]
-
-        # Add upgrades into the pool
-        sigma_open = self.options.sigma_open.value
-        if "Armor Upgrades" in sigma_open and self.options.sigma_upgrade_count.value > 0:
-            itempool += [self.create_item(ItemName.body)]
-        else:
-            itempool += [self.create_item(ItemName.body, ItemClassification.useful)]
+		# Add gun upgrades to the pool
+        if self.options.gun_upgrades.value:
+            for u in range(self.options.gun_upgrades_count.value):
+				itempool += [self.create_item(gun_upgrade)]
+				total_required_locations += 1
         
-        itempool += [self.create_item(ItemName.arms)]
-        if self.options.jammed_buster.value:
-            itempool += [self.create_item(ItemName.arms)]
+
 
         itempool += [self.create_item(ItemName.helmet)]
 
@@ -162,9 +160,11 @@ class IWBTGWorld(World):
         junk_count = total_required_locations - len(itempool)
 
         junk_weights = []
-        junk_weights += ([ItemName.small_hp] * 30)
-        junk_weights += ([ItemName.large_hp] * 40)
-        junk_weights += ([ItemName.life] * 30)
+        junk_weights += ([ItemName.bird_trap] * 30)
+        junk_weights += ([ItemName.fruit_trap] * 40)
+        junk_weights += ([ItemName.error_trap] * 10)
+        junk_weights += ([ItemName.stone_trap] * 30)
+        junk_weights += ([ItemName.death_trap] * 10)
 
         junk_pool = []
         for i in range(junk_count):
@@ -173,22 +173,20 @@ class IWBTGWorld(World):
 
         itempool += junk_pool
 
-        # Set Maverick Medals
-        maverick_location_names = [
-            LocationName.armored_armadillo_clear,
-            LocationName.boomer_kuwanger_clear,
-            LocationName.chill_penguin_clear,
-            LocationName.flame_mammoth_clear,
-            LocationName.launch_octopus_clear,
-            LocationName.spark_mandrill_clear,
-            LocationName.sting_chameleon_clear,
-            LocationName.storm_eagle_clear
+        # Set Victories
+        boss_location_names = [
+            LocationName.mike_tyson_defeated,
+			LocationName.mecha_birdo_defeated,
+			LocationName.dracula_defeated,
+			LocationName.kraidgief_defeated,
+			LocationName.bowser_defeated,
         ]
-        for location_name in maverick_location_names:
-            self.multiworld.get_location(location_name, self.player).place_locked_item(self.create_item(ItemName.maverick_medal))
+        for location_name in boss_location_names:
+            self.multiworld.get_location(location_name, self.player).place_locked_item(self.create_item(ItemName.boss_defeated))
 
-        # Set victory item
-        self.multiworld.get_location(LocationName.sigma_fortress_4_sigma, self.player).place_locked_item(self.create_item(ItemName.victory))
+        # Set victory items
+        self.multiworld.get_location(LocationName.guy_defeated, self.player).place_locked_item(self.create_item(ItemName.guy_defeated))
+        self.multiworld.get_location(LocationName.dev_room, self.player).place_locked_item(self.create_item(ItemName.dev_room))
 
         # Finish
         self.multiworld.itempool += itempool

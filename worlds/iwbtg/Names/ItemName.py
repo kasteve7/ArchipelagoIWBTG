@@ -1,4 +1,10 @@
+# Events
+boss_defeated "Boss Defeated"
+guy_defeated = "Defeated The Guy"
+dev_room = "Entered Dev Room"
+
 # Access
+spike_platform = "Spike Platform"
 link = "Link"
 graveyard_moon = "Falling Graveyard Moon"
 ryu = "Ryu"
@@ -33,6 +39,9 @@ fruit_trap = "Delicious Fruit Trap"
 error_trap = "Game Crash"
 stone_trap = "Petrification Trap"
 death_trap = "Death Trap"
+
+# Buffs
+gun_upgrade = "Gun Upgrade"
 
 # Junk
 bow = "Pretty Bow"

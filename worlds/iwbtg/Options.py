@@ -110,71 +110,26 @@ class SecretItemCount(Range):
 
 iwbtg_option_groups = [
     OptionGroup("Gameplay Options", [
-        StartingLifeCount,
-        StartingHP,
-        HeartTankEffectiveness,
-        JammedBuster,
-        BetterWallJump,
-        LongJumps,
-        AirDash,
-        HadoukenInPool,
-        LogicChargedShotgunIce,
-        LogicHelmetCheckpoints,
+        SetGoal,
+		GunUpgrades,
+        GunUpgradesCount,
+		AdditionalProgressionItems,
+		SecretItemCount,
     ]),
-    OptionGroup("Sigma Fortress Options", [
-        SigmaOpen,
-        SigmaMedalCount,
-        SigmaWeaponCount,
-        SigmaArmorUpgradeCount,
-        SigmaHeartTankCount,
-        SigmaSubTankCount,
-        FortressBundleUnlock,
-        LogicLegSigma,
-    ]),
-    OptionGroup("Boss Weaknesses", [
-        BossWeaknessRando,
-        BossWeaknessStrictness,
-        BossRandomizedHP,
-        LogicBossWeakness,
-    ]),
-    OptionGroup("Enemy Tweaks", [
-        ChillPenguinTweaks,
-        ArmoredArmadilloTweaks,
-        SparkMandrillTweaks,
+    OptionGroup("Guy Fortress Options", [
+        GuyOpen,
+        DivideOrbs,
+        GuyBossCount,
     ]),
 ]
 
 @dataclass
 class IWBTGOptions(PerGameCommonOptions):
-    start_inventory_from_pool: StartInventoryPool
-    death_link: DeathLink
-    energy_link: EnergyLink
-    button_configuration: ButtonConfiguration
-    starting_life_count: StartingLifeCount
-    starting_hp: StartingHP
-    heart_tank_effectiveness: HeartTankEffectiveness
-    boss_weakness_rando: BossWeaknessRando
-    boss_weakness_strictness: BossWeaknessStrictness
-    boss_weakness_plando: PlandoWeaknesses
-    boss_randomize_hp: BossRandomizedHP
-    jammed_buster: JammedBuster
-    better_walljump: BetterWallJump
-    air_dash: AirDash
-    long_jumps: LongJumps
-    hadouken_in_pool: HadoukenInPool
-    pickupsanity: PickupSanity
-    early_legs: EarlyLegs
-    logic_boss_weakness: LogicBossWeakness
-    logic_leg_sigma: LogicLegSigma
-    logic_charged_shotgun_ice: LogicChargedShotgunIce
-    logic_helmet_checkpoints: LogicHelmetCheckpoints
-    sigma_all_levels: FortressBundleUnlock
-    sigma_open: SigmaOpen
-    sigma_medal_count: SigmaMedalCount
-    sigma_weapon_count: SigmaWeaponCount
-    sigma_upgrade_count: SigmaArmorUpgradeCount
-    sigma_heart_tank_count: SigmaHeartTankCount
-    sigma_sub_tank_count: SigmaSubTankCount
-    chill_penguin_tweaks: ChillPenguinTweaks
-    armored_armadillo_tweaks: ArmoredArmadilloTweaks
-    spark_mandrill_tweaks: SparkMandrillTweaks
+    set_goal: SetGoal
+	gun_upgrades: GunUpgrades
+	gun_upgrades_count: GunUpgradesCount
+	additional_progression_items: AdditionalProgressionItems
+	guy_open: GuyOpen
+	dicide_orbs: DivideOrbs
+	guy_boss_count: GuyBossCount
+	secret_item_count: SecretItemCount
