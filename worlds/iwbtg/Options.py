@@ -69,11 +69,11 @@ class SecretItemCount(Range):
 class AdditionalProgressionItems(OptionSet):
 	"""
 	Additional progression items are added to the pool.
-	Spike Platform - The spike platform on the path to Mike Tyson will not drop.
+	Spike Platform - The spike platform/trap on the path to Mike Tyson will not drop until collected
 	Link - Link will be absent in the Zelda room until collected
-	Graveyard Moon - The graveyard's moon will not open mecha birdo access until collected
+	Falling Graveyard Moon - The graveyard's full moon will not open mecha birdo access until collected
 	Ryu - Ryu will not appear in the fan room until collected
-	Tourian Key - The entrance to Tourian will be blocked until the collected
+	Tourian Key - The entrance to Tourian will be blocked until collected
 	"""
 	display_name = "Additional Progression Items"
 	valid_keys = {
@@ -93,8 +93,9 @@ class AdditionalProgressionItems(OptionSet):
 	
 class FreeWarping(Toggle):
 	"""
-	Pressing backspace will allow you to warp instantly to previously visited important locations.
-	This helps reduce time backtracking.
+	Pressing backspace will allow you to warp instantly to previously visited important locations. This helps reduce time backtracking.
+	backspace will always allow the player to at least teleport to the beginning of the game.
+	If The Guy is defeated, it will warp to the room of divine transportation instead of the start (like vanilla).
 	"""
 	display_name = "Free Warping"
 
@@ -112,6 +113,16 @@ class GunUpgradesCount(Range):
 	range_start = 0
 	range_end = 3
 	default = 3
+	
+class DeathLinkCount(Range):
+	"""
+	number of deaths before sending a death link to other players. Godspeed.
+	minimum 1 max 50
+	"""
+	display_name = "Death Link Count"
+	range_start = 1
+	range_end = 50
+	default = 10
 
 iwbtg_option_groups = [
 	OptionGroup("Gameplay Options", [
@@ -132,12 +143,14 @@ iwbtg_option_groups = [
 @dataclass
 class IWBTGOptions(PerGameCommonOptions):
 	set_goal: SetGoal
-	gun_upgrades: GunUpgrades
-	gun_upgrades_count: GunUpgradesCount
-	free_warping: FreeWarping
-	additional_progression_items: AdditionalProgressionItems
 	guy_open: GuyOpen
 	divide_orbs: DivideOrbs
 	guy_orb_count: GuyOrbCount
 	guy_boss_count: GuyBossCount
 	secret_item_count: SecretItemCount
+	additional_progression_items: AdditionalProgressionItems
+	free_warping: FreeWarping
+	gun_upgrades: GunUpgrades
+	gun_upgrades_count: GunUpgradesCount
+	death_link: DeathLink
+	death_link_count: DeathLinkCount
