@@ -10,6 +10,7 @@ start_divine_save = "Divine Transportation Save Point"
 mike_tyson_defeated = "Mike Tyson Defeated"
 mike_tyson_orb = "Mike Tyson's Orb"
 secret_item_1 = "Secret Item #1"
+dev_room = "Entered Dev Room"
 
 #zelda
 zelda_save = "Zelda Save Point"
@@ -39,7 +40,7 @@ tower_couches_save = "Couches Save Point"
 tower_couches_easy_save = "Tower Walljump Easy Save Point"
 tower_yoku_save = "Yoku Block Save Point"
 tower_right_save = "Tower Top Right Save Point"
-secret_item_4 = "Secret Item #4"
+secret_item_3 = "Secret Item #3"
 
 #tower from bowser
 tower_bowser_save = "Post-Bowser Save Point"
@@ -57,12 +58,12 @@ dracula_orb = "Dracula's Orb"
 #gate
 gate_save = "Gate Save Point"
 
-#kraidgeif lair
-geif_first_save = "Kraidgief Lair First Save Point"
-geif_cave_save = "Kraidgief Cave Save Point"
-geif_secret_save = "Cave Secret Save Point"
-geif_descent_easy_save = "Kraidgief Descent Easy Save Point"
-geif_descent_save = "Pre-Kraidgief Save Point"
+#kraidgief lair
+gief_first_save = "Kraidgief Lair First Save Point"
+gief_cave_save = "Kraidgief Cave Save Point"
+gief_secret_save = "Cave Secret Save Point"
+gief_descent_easy_save = "Kraidgief Descent Easy Save Point"
+gief_descent_save = "Pre-Kraidgief Save Point"
 kraidgief_defeated = "Kraidgief Defeated"
 kraidgief_orb = "Kraidgief's Orb"
 secret_item_5 = "Secret Item #5"
@@ -81,7 +82,7 @@ tourian_save = "Tourian Save Point"
 tourian_escape_save = "Tourian Escape Save Point"
 mother_brain_defeated = "Mother Brain Defeated"
 mother_brain_orb = "Mother Brain's Orb"
-secret_item_3 = "Secret Item #3"
+secret_item_4 = "Secret Item #4"
 
 #guy road
 road_first_save = "Road to the Guy Save Point #1"

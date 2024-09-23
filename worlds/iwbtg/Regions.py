@@ -8,37 +8,37 @@ from worlds.AutoWorld import World
 
 
 def create_regions(multiworld: MultiWorld, player: int, world: World, active_locations):
-    menu = create_region(multiworld, player, active_locations, 'Menu')
+	menu = create_region(multiworld, player, active_locations, 'Menu')
 
-    guy_level = create_region(multiworld, player, active_locations, RegionName.guy_level)
-    guy_level_sky = create_region(multiworld, player, active_locations, RegionName.guy_level_sky)
+	guy_level = create_region(multiworld, player, active_locations, RegionName.guy_level)
+	guy_level_sky = create_region(multiworld, player, active_locations, RegionName.guy_level_sky)
 	
-    zelda_level = create_region(multiworld, player, active_locations, RegionName.zelda_level)
+	zelda_level = create_region(multiworld, player, active_locations, RegionName.zelda_level)
 
-    graveyard_level = create_region(multiworld, player, active_locations, RegionName.graveyard_level)
+	graveyard_level = create_region(multiworld, player, active_locations, RegionName.graveyard_level)
 
-    tower_level_left = create_region(multiworld, player, active_locations, RegionName.tower_level_left)
-    tower_level_right = create_region(multiworld, player, active_locations, RegionName.tower_level_right)
+	tower_level_left = create_region(multiworld, player, active_locations, RegionName.tower_level_left)
+	tower_level_right = create_region(multiworld, player, active_locations, RegionName.tower_level_right)
 	tower_level_top = create_region(multiworld, player, active_locations, RegionName.tower_level_top)
 
-    dracula_level = create_region(multiworld, player, active_locations, RegionName.dracula_level)
+	dracula_level = create_region(multiworld, player, active_locations, RegionName.dracula_level)
 
-    gate_level = create_region(multiworld, player, active_locations, RegionName.gate_level)
+	gate_level = create_region(multiworld, player, active_locations, RegionName.gate_level)
 
-    kraidgief_level = create_region(multiworld, player, active_locations, RegionName.kraidgief_level)
+	kraidgief_level = create_region(multiworld, player, active_locations, RegionName.kraidgief_level)
 
-    megaman_level = create_region(multiworld, player, active_locations, RegionName.megaman_level)
+	megaman_level = create_region(multiworld, player, active_locations, RegionName.megaman_level)
 	
-    tourian_level = create_region(multiworld, player, active_locations, RegionName.tourian_level)
-    
-    road_level = create_region(multiworld, player, active_locations, RegionName.road_level)
+	tourian_level = create_region(multiworld, player, active_locations, RegionName.tourian_level)
+	
+	road_level = create_region(multiworld, player, active_locations, RegionName.road_level)
 
-    fortress_level = create_region(multiworld, player, active_locations, RegionName.fortress_level)
+	fortress_level = create_region(multiworld, player, active_locations, RegionName.fortress_level)
 
-    multiworld.regions += [
-        menu,
-        guy_level,
-        guy_level_sky,
+	multiworld.regions += [
+		menu,
+		guy_level,
+		guy_level_sky,
 		zelda_level,
 		graveyard_level,
 		tower_level_left,
@@ -51,72 +51,94 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 		tourian_level,
 		road_level,
 		fortress_level,
-    ]
+	]
 
-    # Guy Land
-    add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_first_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_tree_easy_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_cloud_save)
-	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_water_Save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_first_easy_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_divine_save)
+	# Guy Land
+	add_event_to_region(multiworld, player, RegionName.guy_level, LocationName.mike_tyson_defeated, ItemName.boss_defeated)
+	add_event_to_region(multiworld, player, RegionName.guy_level, LocationName.dev_room, ItemName.dev_room)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_first_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_tree_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_cloud_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_water_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_first_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_divine_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.secret_item_1)
 	
-    add_location_to_region(multiworld, player, active_locations, RegionName.guy_level_sky, LocationName.start_sky_easy_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.guy_level_sky, LocationName.start_tyson_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level_sky, LocationName.start_sky_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level_sky, LocationName.start_tyson_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level_sky, LocationName.mike_tyson_orb)
 
-    # Zelda
-    add_location_to_region(multiworld, player, active_locations, RegionName.zelda_level, LocationName.zelda_save)
+	# Zelda
+	add_location_to_region(multiworld, player, active_locations, RegionName.zelda_level, LocationName.zelda_save)
  
-    # Graveyard
-    add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_start_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_spikes_easy_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_fruit_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_fruit_easy_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_zombies_easy_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_birdo_save)
+	# Graveyard
+	add_event_to_region(multiworld, player, RegionName.graveyard_level, LocationName.mecha_birdo_defeated, ItemName.boss_defeated)
+	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_start_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_spikes_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_fruit_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_fruit_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_zombies_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_birdo_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.mecha_birdo_orb)
+	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.secret_item_2)
  
-    # Tower Top (Mecha Birdo)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_top, LocationName.tower_egg_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_top, LocationName.tower_outside_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_top, LocationName.tower_drones_easy_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_top, LocationName.tower_fan_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_top, LocationName.tower_fan_easy_save)
+	# Tower Top (Mecha Birdo)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_top, LocationName.tower_egg_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_top, LocationName.tower_outside_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_top, LocationName.tower_drones_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_top, LocationName.tower_fan_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_top, LocationName.tower_fan_easy_save)
  
-    # Tower Right (Tourian)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_bottom_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_bottom_easy_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_couches_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_couches_easy_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_yoku_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_right_save)
+	# Tower Right (Tourian)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_bottom_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_bottom_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_couches_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_couches_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_yoku_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.tower_right_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_left, LocationName.secret_item_3)
  
-    # Tower Left (Megaman)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_right, LocationName.tower_bowser_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_right, LocationName.tower_left_easy_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_right, LocationName.tower_left_save)
-    add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_right, LocationName.tower_spikes_save)
+	# Tower Left (Megaman)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_right, LocationName.tower_bowser_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_right, LocationName.tower_left_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_right, LocationName.tower_left_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_right, LocationName.tower_spikes_save)
 	
 	# Dracula
+	add_event_to_region(multiworld, player, RegionName.dracula_level, LocationName.dracula_defeated, ItemName.boss_defeated)
 	add_location_to_region(multiworld, player, active_locations, RegionName.dracula_level, LocationName.dracula_stairs_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.dracula_level, LocationName.dracula_spikes_easy_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.dracula_level, LocationName.dracula_final_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.dracula_level, LocationName.dracula_orb)
 	
 	# Gate
 	add_location_to_region(multiworld, player, active_locations, RegionName.gate_level, LocationName.gate_save)
 	
 	# Kraidgief's lair
+	add_event_to_region(multiworld, player, RegionName.kraidgief_level, LocationName.kraidgief_defeated, ItemName.boss_defeated)
 	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.gief_first_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.gief_cave_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.gief_secret_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.gief_descent_easy_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.gief_descent_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.kraidgief_orb)
+	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.secret_item_5)
 	
 	# Factory
-	add_location_to_region(multiworld, player, active_locations, RegionName.factory_level, LocationName.factory_first_save)
-	add_location_to_region(multiworld, player, active_locations, RegionName.factory_level, LocationName.factory_tourian_easy_save)
-	add_location_to_region(multiworld, player, active_locations, RegionName.factory_level, LocationName.factory_laser_save)
-	add_location_to_region(multiworld, player, active_locations, RegionName.factory_level, LocationName.factory_bowser_easy_save)
-	add_location_to_region(multiworld, player, active_locations, RegionName.factory_level, LocationName.factory_bowser_save)
+	add_event_to_region(multiworld, player, RegionName.megaman_level, LocationName.bowser_defeated, ItemName.boss_defeated)
+	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.factory_first_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.factory_tourian_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.factory_laser_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.factory_bowser_easy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.factory_bowser_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.bowser_orb)
+	
+	# Tourian
+	add_event_to_region(multiworld, player, RegionName.megaman_level, LocationName.mother_brain_defeated, ItemName.boss_defeated)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tourian_level, LocationName.tourian_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tourian_level, LocationName.tourian_escape_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tourian_level, LocationName.mother_brain_orb)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tourian_level, LocationName.secret_item_4)
 	
 	# Guy Road
 	add_location_to_region(multiworld, player, active_locations, RegionName.road_level, LocationName.road_first_save)
@@ -125,8 +147,10 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 	add_location_to_region(multiworld, player, active_locations, RegionName.road_level, LocationName.road_fourth_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.road_level, LocationName.road_fifth_easy_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.road_level, LocationName.road_dragon_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.road_level, LocationName.dragon_defeated)
 	
 	# Castle
+	add_event_to_region(multiworld, player, RegionName.fortress_level, LocationName.guy_defeated, ItemName.guy_defeated)
 	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.castle_entrance_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.castle_entrance_easy_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.castle_labyrinth_save)
@@ -139,74 +163,78 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.castle_frontdoor_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.castle_tower_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.castle_guy_save)
+	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.secret_item_6)
 
-    # if world.options.pickupsanity:
+	# if world.options.pickupsanity:
 
 
 def connect_regions(world: World):
-    connect(world, "Menu", RegionName.guy_level)
+	connect(world, "Menu", RegionName.guy_level)
 
-    connect(world, RegionName.guy_level, RegionName.guy_level_sky)
-    connect(world, RegionName.guy_level, RegionName.zelda_level)
-    connect(world, RegionName.guy_level, RegionName.megaman_level)
-    connect(world, RegionName.guy_level, RegionName.kraidgief_level)
+	connect(world, RegionName.guy_level, RegionName.guy_level_sky)
+	connect(world, RegionName.guy_level, RegionName.zelda_level)
+	connect(world, RegionName.guy_level, RegionName.megaman_level)
+	connect(world, RegionName.guy_level, RegionName.kraidgief_level)
 	
 	connect(world, RegionName.guy_level_sky, RegionName.guy_level)
 
-    connect(world, RegionName.zelda_level, RegionName.graveyard_level)
-    
-    connect(world, RegionName.graveyard_level, RegionName.tower_level_top)
+	connect(world, RegionName.zelda_level, RegionName.graveyard_level)
+	
+	connect(world, RegionName.graveyard_level, RegionName.tower_level_top)
 
-    connect(world, RegionName.tower_level_top, RegionName.dracula_level)
-    connect(world, RegionName.tower_level_top, RegionName.gate_level)
+	connect(world, RegionName.tower_level_top, RegionName.dracula_level)
+	connect(world, RegionName.tower_level_top, RegionName.gate_level)
 	
-    connect(world, RegionName.gate_level, RegionName.tower_level_top)
-    connect(world, RegionName.gate_level, RegionName.tower_level_right)
-    connect(world, RegionName.gate_level, RegionName.guy_level)
+	#connect(world, RegionName.gate_level, RegionName.tower_level_top)
+	connect(world, RegionName.gate_level, RegionName.tower_level_right)
+	connect(world, RegionName.gate_level, RegionName.guy_level)
+	connect(world, RegionName.gate_level, RegionName.road_level)
 	
-    connect(world, RegionName.kraidgief_level, RegionName.megaman_level)
+	connect(world, RegionName.kraidgief_level, RegionName.megaman_level)
 	
-    connect(world, RegionName.megaman_level, RegionName.tourian_level)
-    connect(world, RegionName.megaman_level, RegionName.tower_level_left)
+	connect(world, RegionName.megaman_level, RegionName.tourian_level)
+	connect(world, RegionName.megaman_level, RegionName.tower_level_left)
 	
-    connect(world, RegionName.tourian_level, RegionName.tower_level_right)
+	connect(world, RegionName.tourian_level, RegionName.tower_level_right)
 	
-    connect(world, RegionName.tower_level_left, RegionName.tower_level_top)
+	connect(world, RegionName.tower_level_left, RegionName.tower_level_top)
 	
-    connect(world, RegionName.tower_level_right, RegionName.gate_level)
+	connect(world, RegionName.tower_level_right, RegionName.gate_level)
+	
+	connect(world, RegionName.road_level, RegionName.fortress_level)
 	
 
 def create_region(multiworld: MultiWorld, player: int, active_locations, name: str, locations=None):
-    ret = Region(name, player, multiworld)
-    if locations:
-        for locationName in locations:
-            loc_id = active_locations.get(locationName, 0)
-            if loc_id:
-                location = IWBTGLocation(player, locationName, loc_id, ret)
-                ret.locations.append(location)
+	ret = Region(name, player, multiworld)
+	if locations:
+		for locationName in locations:
+			loc_id = active_locations.get(locationName, 0)
+			if loc_id:
+				location = IWBTGLocation(player, locationName, loc_id, ret)
+				ret.locations.append(location)
 
-    return ret
+	return ret
 
 
 def add_event_to_region(multiworld: MultiWorld, player: int, region_name: str, event_name: str, event_item=None):
-    region = multiworld.get_region(region_name, player)
-    event = IWBTGLocation(player, event_name, None, region)
-    if event_item:
-        event.place_locked_item(IWBTGItem(event_item, ItemClassification.progression, None, player))
-    else:
-        event.place_locked_item(IWBTGItem(event_name, ItemClassification.progression, None, player))
-    region.locations.append(event)
+	region = multiworld.get_region(region_name, player)
+	event = IWBTGLocation(player, event_name, None, region)
+	if event_item:
+		event.place_locked_item(IWBTGItem(event_item, ItemClassification.progression, None, player))
+	else:
+		event.place_locked_item(IWBTGItem(event_name, ItemClassification.progression, None, player))
+	region.locations.append(event)
 
 
 def add_location_to_region(multiworld: MultiWorld, player: int, active_locations, region_name: str, location_name: str):
-    region = multiworld.get_region(region_name, player)
-    loc_id = active_locations.get(location_name, 0)
-    if loc_id:
-        location = IWBTGLocation(player, location_name, loc_id, region)
-        region.locations.append(location)
+	region = multiworld.get_region(region_name, player)
+	loc_id = active_locations.get(location_name, 0)
+	if loc_id:
+		location = IWBTGLocation(player, location_name, loc_id, region)
+		region.locations.append(location)
 
 
 def connect(world: World, source: str, target: str):
-    source_region: Region = world.multiworld.get_region(source, world.player)
-    target_region: Region = world.multiworld.get_region(target, world.player)
-    source_region.connect(target_region)
+	source_region: Region = world.multiworld.get_region(source, world.player)
+	target_region: Region = world.multiworld.get_region(target, world.player)
+	source_region.connect(target_region)
