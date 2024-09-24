@@ -15,9 +15,10 @@ class SetGoal(Choice):
 	
 class GuyOpen(OptionSet):
 	"""
-	Conditions for The Guy's fortress to open
-	Orbs: Orb items need to be collected in the multiworld.
-	Bosses: Bosses need to be defeated.
+	Conditions for The Guy's fortress to open.
+
+    Orbs - All orb items need to be collected in the multiworld.
+    Bosses - Bosses need to be defeated.
 	"""
 	display_name = "Guy Fortress Rules"
 	valid_keys = {
@@ -27,15 +28,6 @@ class GuyOpen(OptionSet):
 	default = {
 		"Orbs",
 	}
-
-class GuyOrbCount(Range):
-	"""
-	How many orbs needed to be defeated to access The Guy's fortress.
-	"""
-	display_name = "Guy Orb Count"
-	range_start = 0
-	range_end = 6
-	default = 6
 	
 class GuyBossCount(Range):
 	"""
@@ -49,7 +41,7 @@ class GuyBossCount(Range):
 	
 class DivideOrbs(Choice):
 	"""
-	Orbs will be whole or in pieces to add additional items to the pool
+	Orbs will be whole or in pieces to add additional items to the pool.
 	"""
 	display_name = "Divide Orbs"
 	option_whole = 0
@@ -69,11 +61,12 @@ class SecretItemCount(Range):
 class AdditionalProgressionItems(OptionSet):
 	"""
 	Additional progression items are added to the pool.
-	Spike Platform - The spike platform/trap on the path to Mike Tyson will not drop until collected
-	Link - Link will be absent in the Zelda room until collected
-	Falling Graveyard Moon - The graveyard's full moon will not open mecha birdo access until collected
-	Ryu - Ryu will not appear in the fan room until collected
-	Tourian Key - The entrance to Tourian will be blocked until collected
+
+    Spike Platform: The spike platform/trap on the path to Mike Tyson will not drop until collected.
+    Link: Link will be absent in the Zelda room until collected.
+    Falling Graveyard Moon: The graveyard's full moon will not open mecha birdo access until collected.
+    Ryu: Ryu will not appear in the fan room until collected.
+    Tourian Key: The entrance to Tourian will be blocked until collected.
 	"""
 	display_name = "Additional Progression Items"
 	valid_keys = {
@@ -91,11 +84,11 @@ class AdditionalProgressionItems(OptionSet):
 		"Tourian Key",
 	}
 	
-class FreeWarping(Toggle):
+class FreeWarping(DefaultOnToggle):
 	"""
 	Pressing backspace will allow you to warp instantly to previously visited important locations. This helps reduce time backtracking.
-	backspace will always allow the player to at least teleport to the beginning of the game.
-	If The Guy is defeated, it will warp to the room of divine transportation instead of the start (like vanilla).
+    backspace will always allow the player to at least teleport to the beginning of the game.
+    If The Guy is defeated, it will warp to the room of divine transportation instead of the start (like vanilla).
 	"""
 	display_name = "Free Warping"
 
@@ -117,7 +110,6 @@ class GunUpgradesCount(Range):
 class DeathLinkCount(Range):
 	"""
 	number of deaths before sending a death link to other players. Godspeed.
-	minimum 1 max 50
 	"""
 	display_name = "Death Link Count"
 	range_start = 1
@@ -131,11 +123,12 @@ iwbtg_option_groups = [
 		GunUpgradesCount,
 		AdditionalProgressionItems,
 		SecretItemCount,
+		DeathLinkCount,
+		FreeWarping,
 	]),
 	OptionGroup("Guy Fortress Options", [
 		GuyOpen,
 		DivideOrbs,
-		GuyOrbCount,
 		GuyBossCount,
 	]),
 ]
@@ -145,7 +138,6 @@ class IWBTGOptions(PerGameCommonOptions):
 	set_goal: SetGoal
 	guy_open: GuyOpen
 	divide_orbs: DivideOrbs
-	guy_orb_count: GuyOrbCount
 	guy_boss_count: GuyBossCount
 	secret_item_count: SecretItemCount
 	additional_progression_items: AdditionalProgressionItems

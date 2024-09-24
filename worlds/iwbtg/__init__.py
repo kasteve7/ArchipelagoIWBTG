@@ -76,7 +76,7 @@ class IWBTGWorld(World):
 		
 		base_id = 92000
 		
-		total_required_locations = 85 #location num needs verifying (85 counted - 6 bosses)
+		total_required_locations = 77 #location num needs verifying (85 counted - 6 bosses)
 		
 		#if self.options.<deathsanity?>:
 		#	total_required_locations += #
@@ -106,7 +106,15 @@ class IWBTGWorld(World):
 			ItemName.orb_piece_dracula,
 			ItemName.orb_piece_kraidgief,
 			ItemName.orb_piece_mother_brain,
-			ItemName.orb_piece_bowser]
+			ItemName.orb_piece_bowser,]
+			
+		orb_shard_list = [
+			ItemName.orb_shard_mike_tyson,
+			ItemName.orb_shard_mecha_birdo,
+			ItemName.orb_shard_dracula,
+			ItemName.orb_shard_kraidgief,
+			ItemName.orb_shard_mother_brain,
+			ItemName.orb_shard_bowser,]
 		
 		if "Orbs" in self.options.guy_open.value:
 			if self.options.divide_orbs.value == 0: # whole orbs
@@ -118,13 +126,17 @@ class IWBTGWorld(World):
 					self.create_item(ItemName.orb_mother_brain),
 					self.create_item(ItemName.orb_bowser),]
 				#total_required_locations += 6
-			else:
+			elif self.options.divide_orbs.value == 2:
 				for i in orb_piece_list:
-					orb_piece_number = self.options.divide_orbs.value #2 or 4 per orb
+					orb_piece_number = 2 #2 per orb
 					for j in range(orb_piece_number):
-						itempool += [self.create_item(orb_piece_list[i])]
-				#total_required_locations += 6*orb_piece_number
-						
+						itempool += [self.create_item(i)]
+				total_required_locations += 6*orb_piece_number
+			else:
+				for i in orb_shard_list:
+					#orb_shard_number = 4 #4 per orb
+					for j in range(4):
+						itempool += [self.create_item(i)]
 		if self.options.set_goal.value == 1: #dev room goal
 			itempool += [
 				self.create_item(ItemName.secret_item_1, ItemClassification.progression),
@@ -150,23 +162,6 @@ class IWBTGWorld(World):
 			for u in range(self.options.gun_upgrades_count.value):
 				itempool += [self.create_item(gun_upgrade)]
 				#total_required_locations += 1
-		"""
-		# Set victories for bosses
-		boss_location_names = [
-			LocationName.mike_tyson_defeated,
-			LocationName.mecha_birdo_defeated,
-			LocationName.dracula_defeated,
-			LocationName.kraidgief_defeated,
-			LocationName.mother_brain_defeated,
-			LocationName.bowser_defeated,
-		]
-		for location_name in boss_location_names:
-			self.multiworld.get_location(location_name, self.player).place_locked_item(self.create_item(ItemName.boss_defeated))
-
-		# Set victory items for goal
-		self.multiworld.get_location(LocationName.guy_defeated, self.player).place_locked_item(self.create_item(ItemName.guy_defeated))
-		self.multiworld.get_location(LocationName.dev_room, self.player).place_locked_item(self.create_item(ItemName.dev_room))
-		"""
 		
 		# Add junk items into the pool
 		junk_count = total_required_locations - len(itempool)
@@ -187,20 +182,6 @@ class IWBTGWorld(World):
 
 		# Finish
 		self.multiworld.itempool += itempool
-		
-		#MMX CODE
-
-		# Add sub tanks into the pool
-		"""
-		if "Sub Tanks" in sigma_open and self.options.sigma_sub_tank_count.value > 0:
-			i = self.options.sigma_sub_tank_count.value
-			itempool += [self.create_item(ItemName.sub_tank) for _ in range(i)]
-			if i != 4:
-				itempool += [self.create_item(ItemName.sub_tank, ItemClassification.useful) for _ in range(4 - i)]
-		else:
-			itempool += [self.create_item(ItemName.sub_tank, ItemClassification.useful) for _ in range(4)]
-		"""
-
 
 	def create_item(self, name: str, force_classification=False) -> Item:
 		data = item_table[name]
@@ -227,14 +208,15 @@ class IWBTGWorld(World):
 	def fill_slot_data(self) -> dict[int, any]:
 		slot_data = {}
 		# Write options to slot_data
+		slot_data["additional_progression_items"] = self.options.additional_progression_items.value
 		slot_data["gun_upgrades"] = self.options.gun_upgrades.value
 		slot_data["gun_upgrades_count"] = self.options.gun_upgrades_count.value
 		slot_data["free_warping"] = self.options.free_warping.value
 		slot_data["guy_open"] = self.options.guy_open.value
-		slot_data["guy_orb_count"] = self.options.guy_orb_count.value
 		slot_data["guy_boss_count"] = self.options.guy_boss_count.value
 		slot_data["secret_item_count"] = self.options.secret_item_count.value
 		slot_data["divide_orbs"] = self.options.divide_orbs.value
+		slot_data["death_link_count"] = self.options.divide_orbs.value
 				
 		return slot_data
 

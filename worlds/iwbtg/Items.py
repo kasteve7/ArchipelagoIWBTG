@@ -40,6 +40,13 @@ orb_table = {
     ItemName.orb_piece_kraidgief:   	IWBTGItemData(92303, ItemClassification.progression),
     ItemName.orb_piece_mother_brain:	IWBTGItemData(92304, ItemClassification.progression),
     ItemName.orb_piece_bowser:      	IWBTGItemData(92305, ItemClassification.progression),
+	
+    ItemName.orb_shard_mike_tyson: 		IWBTGItemData(92306, ItemClassification.progression),
+    ItemName.orb_shard_mecha_birdo: 	IWBTGItemData(92307, ItemClassification.progression),
+    ItemName.orb_shard_dracula:     	IWBTGItemData(92308, ItemClassification.progression),
+    ItemName.orb_shard_kraidgief:   	IWBTGItemData(92309, ItemClassification.progression),
+    ItemName.orb_shard_mother_brain:	IWBTGItemData(92310, ItemClassification.progression),
+    ItemName.orb_shard_bowser:      	IWBTGItemData(92311, ItemClassification.progression),
 }
 
 secret_item_table = {
@@ -76,13 +83,19 @@ item_groups = {
 		ItemName.orb_mother_brain,
         ItemName.orb_bowser,
 
-		
 		ItemName.orb_piece_mike_tyson,
         ItemName.orb_piece_mecha_birdo,
         ItemName.orb_piece_dracula,
 		ItemName.orb_piece_kraidgief,
 		ItemName.orb_piece_mother_brain,
         ItemName.orb_piece_bowser,
+		
+		ItemName.orb_shard_mike_tyson,
+        ItemName.orb_shard_mecha_birdo,
+        ItemName.orb_shard_dracula,
+		ItemName.orb_shard_kraidgief,
+		ItemName.orb_shard_mother_brain,
+        ItemName.orb_shard_bowser,
     },
     "Access": {
         ItemName.spike_platform,

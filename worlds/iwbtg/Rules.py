@@ -42,16 +42,25 @@ def set_rules(world: IWBTGWorld):
 	entrance = multiworld.get_entrance(f"{RegionName.gate_level} -> {RegionName.road_level}", player)
 
 	if "Orbs" in fortress_open:
-		if world.options.divide_orbs.value == 0:
-			add_rule(entrance, lambda state: state.has_group_unique("Orbs", player, world.options.guy_orb_count.value))
+		pNum = world.options.divide_orbs.value
+		if pNum == 0:
+			add_rule(entrance, lambda state: state.has_group_unique("Orbs", player, 6))
+		elif pNum == 2:
+			add_rule(entrance, lambda state:
+				state.has_all_counts({ItemName.orb_piece_mike_tyson: 2}, player) and
+				state.has_all_counts({ItemName.orb_piece_mecha_birdo: 2}, player) and
+				state.has_all_counts({ItemName.orb_piece_dracula: 2}, player) and
+				state.has_all_counts({ItemName.orb_piece_kraidgief: 2}, player) and
+				state.has_all_counts({ItemName.orb_piece_mother_brain: 2}, player) and
+				state.has_all_counts({ItemName.orb_piece_bowser: 2}, player))
 		else:
-			add_rule(entrance, lambda state: 
-				state.has_all_counts(ItemName.orb_piece_mike_tyson, player, world.options.divide_orbs.value) and
-				state.has_all_counts(ItemName.orb_piece_mecha_birdo, player, world.options.divide_orbs.value) and
-				state.has_all_counts(ItemName.orb_piece_dracula, player, world.options.divide_orbs.value) and
-				state.has_all_counts(ItemName.orb_piece_kraidgief, player, world.options.divide_orbs.value) and
-				state.has_all_counts(ItemName.orb_piece_mother_brain, player, world.options.divide_orbs.value) and
-				state.has_all_counts(ItemName.orb_piece_bowser, player, world.options.divide_orbs.value))
+			add_rule(entrance, lambda state:
+				state.has_all_counts({ItemName.orb_shard_mike_tyson: 4}, player) and
+				state.has_all_counts({ItemName.orb_shard_mecha_birdo: 4}, player) and
+				state.has_all_counts({ItemName.orb_shard_dracula: 4}, player) and
+				state.has_all_counts({ItemName.orb_shard_kraidgief: 4}, player) and
+				state.has_all_counts({ItemName.orb_shard_mother_brain: 4}, player) and
+				state.has_all_counts({ItemName.orb_shard_bowser: 4}, player))
 				
 	if "Bosses" in fortress_open and world.options.guy_boss_count.value:
 		add_rule(entrance, lambda state: state.has(ItemName.boss_defeated, player, world.options.guy_boss_count.value))
