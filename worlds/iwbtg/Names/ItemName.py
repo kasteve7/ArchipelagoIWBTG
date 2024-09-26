@@ -1,6 +1,6 @@
 # Events
 boss_defeated = "Boss Defeated"
-guy_defeated = "Defeated The Guy"
+become_the_guy = "Become The Guy"
 dev_room = "Entered Dev Room"
 
 # Access

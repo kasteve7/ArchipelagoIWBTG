@@ -81,6 +81,16 @@ class IWBTGWorld(World):
 		#if self.options.<deathsanity?>:
 		#	total_required_locations += #
 		
+		self.multiworld.get_location(LocationName.guy_defeated, self.player).place_locked_item(self.create_item(ItemName.become_the_guy))
+		self.multiworld.get_location(LocationName.dev_room, self.player).place_locked_item(self.create_item(ItemName.dev_room))
+		
+		self.multiworld.get_location(LocationName.mike_tyson_defeated, self.player).place_locked_item(self.create_item(ItemName.boss_defeated))
+		self.multiworld.get_location(LocationName.mecha_birdo_defeated, self.player).place_locked_item(self.create_item(ItemName.boss_defeated))
+		self.multiworld.get_location(LocationName.dracula_defeated, self.player).place_locked_item(self.create_item(ItemName.boss_defeated))
+		self.multiworld.get_location(LocationName.kraidgief_defeated, self.player).place_locked_item(self.create_item(ItemName.boss_defeated))
+		self.multiworld.get_location(LocationName.mother_brain_defeated, self.player).place_locked_item(self.create_item(ItemName.boss_defeated))
+		self.multiworld.get_location(LocationName.bowser_defeated, self.player).place_locked_item(self.create_item(ItemName.boss_defeated))
+		
 		if self.options.additional_progression_items.value != 0: #add optional progression items
 			add_prog_item_count = 0
 			if "Spike Platform" in self.options.additional_progression_items.value:
@@ -116,7 +126,7 @@ class IWBTGWorld(World):
 			ItemName.orb_shard_mother_brain,
 			ItemName.orb_shard_bowser,]
 		
-		if "Orbs" in self.options.guy_open.value:
+		if self.options.guy_open.value == 0 or self.options.guy_open.value == 2:
 			if self.options.divide_orbs.value == 0: # whole orbs
 				itempool += [
 					self.create_item(ItemName.orb_mike_tyson),
@@ -160,7 +170,7 @@ class IWBTGWorld(World):
 		# Add gun upgrades to the pool
 		if self.options.gun_upgrades.value:
 			for u in range(self.options.gun_upgrades_count.value):
-				itempool += [self.create_item(gun_upgrade)]
+				itempool += [self.create_item(ItemName.gun_upgrade)]
 				#total_required_locations += 1
 		
 		# Add junk items into the pool
@@ -210,12 +220,12 @@ class IWBTGWorld(World):
 		# Write options to slot_data
 		slot_data["additional_progression_items"] = self.options.additional_progression_items.value
 		slot_data["gun_upgrades"] = self.options.gun_upgrades.value
-		slot_data["gun_upgrades_count"] = self.options.gun_upgrades_count.value
 		slot_data["free_warping"] = self.options.free_warping.value
 		slot_data["guy_open"] = self.options.guy_open.value
 		slot_data["guy_boss_count"] = self.options.guy_boss_count.value
 		slot_data["secret_item_count"] = self.options.secret_item_count.value
 		slot_data["divide_orbs"] = self.options.divide_orbs.value
+		slot_data["death_link"] = self.options.death_link.value
 		slot_data["death_link_count"] = self.options.divide_orbs.value
 				
 		return slot_data

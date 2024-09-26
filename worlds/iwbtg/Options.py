@@ -7,31 +7,31 @@ from schema import Schema, And, Use, Optional
 class SetGoal(Choice):
 	"""
 	What the player has to do to win.
+    defeat_the_guy = Beat the final boss.
+    access_devroom = Beat the final boss and collect all secret items from the multiworld to access the dev room.
 	"""
 	display_name = "Goal"
-	option_guy = 0
-	option_devroom = 1
+	option_defeat_the_guy = 0
+	option_access_devroom = 1
 	default = 0
 	
-class GuyOpen(OptionSet):
+class GuyOpen(Choice):
 	"""
 	Conditions for The Guy's fortress to open.
 
-    Orbs - All orb items need to be collected in the multiworld.
-    Bosses - Bosses need to be defeated.
+    collect_orbs = All orb items need to be collected from the multiworld.
+    defeat_bosses = A number of Bosses need to be defeated.
+    orbs_and_bosses = All orb items need to be collected from the multiworld AND a number of bosses defeated.
 	"""
 	display_name = "Guy Fortress Rules"
-	valid_keys = {
-		"Orbs",
-		"Bosses",
-	}
-	default = {
-		"Orbs",
-	}
+	option_collect_orbs = 0
+	option_defeat_bosses = 1
+	option_orbs_and_bosses = 2
+	default = 0
 	
 class GuyBossCount(Range):
 	"""
-	Number of bosses to be defeated to enter The Guy's Fortress.
+	If enabled, the number of bosses to be defeated to enter The Guy's Fortress.
 	"""
 	display_name = "Guy Boss Count"
 	range_start = 0
@@ -42,6 +42,9 @@ class GuyBossCount(Range):
 class DivideOrbs(Choice):
 	"""
 	Orbs will be whole or in pieces to add additional items to the pool.
+    If half, one orb will be counted if the player recieves two orb pieces.
+    If quarter, one orb will be counted if the player recieves four orb shards.
+    Pieces and shards are specific to each boss.
 	"""
 	display_name = "Divide Orbs"
 	option_whole = 0
@@ -94,7 +97,7 @@ class FreeWarping(DefaultOnToggle):
 
 class GunUpgrades(Toggle):
 	"""
-	Your gun starts with 1 bullet allowed on screen at a time and three progressive gun items are shuffled into the pool.
+	Your gun starts with 1 bullet allowed on screen at a time and gun upgrade items are shuffled into the pool.
 	"""
 	display_name = "Gun Upgrades"
 	
@@ -104,7 +107,7 @@ class GunUpgradesCount(Range):
 	"""
 	display_name = "Gun Upgrades Count"
 	range_start = 0
-	range_end = 3
+	range_end = 5
 	default = 3
 	
 class DeathLinkCount(Range):

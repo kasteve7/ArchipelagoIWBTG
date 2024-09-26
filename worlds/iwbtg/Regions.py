@@ -54,8 +54,7 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 	]
 
 	# Guy Land
-	add_event_to_region(multiworld, player, RegionName.guy_level, LocationName.mike_tyson_defeated, ItemName.boss_defeated)
-	add_event_to_region(multiworld, player, RegionName.guy_level, LocationName.dev_room, ItemName.dev_room)
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.dev_room)
 	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_first_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_tree_easy_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_cloud_save)
@@ -64,6 +63,7 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.start_divine_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level, LocationName.secret_item_1)
 	
+	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level_sky, LocationName.mike_tyson_defeated)
 	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level_sky, LocationName.start_sky_easy_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level_sky, LocationName.start_tyson_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.guy_level_sky, LocationName.mike_tyson_orb)
@@ -72,7 +72,7 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 	add_location_to_region(multiworld, player, active_locations, RegionName.zelda_level, LocationName.zelda_save)
  
 	# Graveyard
-	add_event_to_region(multiworld, player, RegionName.graveyard_level, LocationName.mecha_birdo_defeated, ItemName.boss_defeated)
+	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.mecha_birdo_defeated)
 	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_start_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_spikes_easy_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.graveyard_level, LocationName.gng_fruit_save)
@@ -105,7 +105,7 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 	add_location_to_region(multiworld, player, active_locations, RegionName.tower_level_right, LocationName.tower_spikes_save)
 	
 	# Dracula
-	add_event_to_region(multiworld, player, RegionName.dracula_level, LocationName.dracula_defeated, ItemName.boss_defeated)
+	add_location_to_region(multiworld, player, active_locations, RegionName.dracula_level, LocationName.dracula_defeated)
 	add_location_to_region(multiworld, player, active_locations, RegionName.dracula_level, LocationName.dracula_stairs_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.dracula_level, LocationName.dracula_spikes_easy_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.dracula_level, LocationName.dracula_final_save)
@@ -115,7 +115,7 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 	add_location_to_region(multiworld, player, active_locations, RegionName.gate_level, LocationName.gate_save)
 	
 	# Kraidgief's lair
-	add_event_to_region(multiworld, player, RegionName.kraidgief_level, LocationName.kraidgief_defeated, ItemName.boss_defeated)
+	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.kraidgief_defeated)
 	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.gief_first_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.gief_cave_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.gief_secret_save)
@@ -125,7 +125,7 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 	add_location_to_region(multiworld, player, active_locations, RegionName.kraidgief_level, LocationName.secret_item_5)
 	
 	# Factory
-	add_event_to_region(multiworld, player, RegionName.megaman_level, LocationName.bowser_defeated, ItemName.boss_defeated)
+	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.bowser_defeated)
 	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.factory_first_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.factory_tourian_easy_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.factory_laser_save)
@@ -134,7 +134,7 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 	add_location_to_region(multiworld, player, active_locations, RegionName.megaman_level, LocationName.bowser_orb)
 	
 	# Tourian
-	add_event_to_region(multiworld, player, RegionName.megaman_level, LocationName.mother_brain_defeated, ItemName.boss_defeated)
+	add_location_to_region(multiworld, player, active_locations, RegionName.tourian_level, LocationName.mother_brain_defeated)
 	add_location_to_region(multiworld, player, active_locations, RegionName.tourian_level, LocationName.tourian_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.tourian_level, LocationName.tourian_escape_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.tourian_level, LocationName.mother_brain_orb)
@@ -150,7 +150,7 @@ def create_regions(multiworld: MultiWorld, player: int, world: World, active_loc
 	add_location_to_region(multiworld, player, active_locations, RegionName.road_level, LocationName.dragon_defeated)
 	
 	# Castle
-	add_event_to_region(multiworld, player, RegionName.fortress_level, LocationName.guy_defeated, ItemName.guy_defeated)
+	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.guy_defeated)
 	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.castle_entrance_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.castle_entrance_easy_save)
 	add_location_to_region(multiworld, player, active_locations, RegionName.fortress_level, LocationName.castle_labyrinth_save)
@@ -185,7 +185,7 @@ def connect_regions(world: World):
 	connect(world, RegionName.tower_level_top, RegionName.dracula_level)
 	connect(world, RegionName.tower_level_top, RegionName.gate_level)
 	
-	#connect(world, RegionName.gate_level, RegionName.tower_level_top)
+	connect(world, RegionName.gate_level, RegionName.tower_level_top)
 	connect(world, RegionName.gate_level, RegionName.tower_level_right)
 	connect(world, RegionName.gate_level, RegionName.guy_level)
 	connect(world, RegionName.gate_level, RegionName.road_level)

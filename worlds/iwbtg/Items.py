@@ -14,7 +14,7 @@ class IWBTGItem(Item):
 # Item tables
 event_table = {
     ItemName.boss_defeated:       		IWBTGItemData(92000, ItemClassification.progression),
-    ItemName.guy_defeated:          	IWBTGItemData(92001, ItemClassification.progression),
+    ItemName.become_the_guy:          	IWBTGItemData(92001, ItemClassification.progression),
     ItemName.dev_room:                  IWBTGItemData(92002, ItemClassification.progression),
 }
 

@@ -9,7 +9,7 @@ def set_rules(world: IWBTGWorld):
 	multiworld = world.multiworld
 
 	if world.options.set_goal.value == 0:
-		multiworld.completion_condition[player] = lambda state: state.has(ItemName.guy_defeated, player)
+		multiworld.completion_condition[player] = lambda state: state.has(ItemName.become_the_guy, player)
 	else:
 		multiworld.completion_condition[player] = lambda state: state.has(ItemName.dev_room, player)
 
@@ -41,7 +41,7 @@ def set_rules(world: IWBTGWorld):
 	fortress_open = world.options.guy_open.value
 	entrance = multiworld.get_entrance(f"{RegionName.gate_level} -> {RegionName.road_level}", player)
 
-	if "Orbs" in fortress_open:
+	if fortress_open == 0 or fortress_open == 2: #need to collect orbs
 		pNum = world.options.divide_orbs.value
 		if pNum == 0:
 			add_rule(entrance, lambda state: state.has_group_unique("Orbs", player, 6))
@@ -62,5 +62,5 @@ def set_rules(world: IWBTGWorld):
 				state.has_all_counts({ItemName.orb_shard_mother_brain: 4}, player) and
 				state.has_all_counts({ItemName.orb_shard_bowser: 4}, player))
 				
-	if "Bosses" in fortress_open and world.options.guy_boss_count.value:
+	if (fortress_open == 1 or fortress_open == 2) and world.options.guy_boss_count.value: # need to defeat bosses
 		add_rule(entrance, lambda state: state.has(ItemName.boss_defeated, player, world.options.guy_boss_count.value))

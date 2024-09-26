@@ -259,7 +259,7 @@ def setup_locations(world: World):
 		**secret_location_table,
 	}
 	
-	if world.options.set_goal.value == 1:
+	if world.options.set_goal.value == 0:
 		location_table.update({**optional_location_table})
 
 	#if world.options.<addLocationsOption>.value: (maybe use for deathsanity? remaster tracks culprits)
